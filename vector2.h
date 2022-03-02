@@ -156,6 +156,26 @@ namespace MathVector
             x /= xFactor;
             y /= yFactor;
         }
+
+        // returns the Dot Product of the two Vectors
+        float dot(Vector2 vector)
+        {
+            return (x * vector.x) + (y * vector.y);
+        }
+        float scalar(Vector2 vector) { return dot(vector); }
+        // returns the Dot Product with a number
+        float dot(float factor)
+        {
+            return (x * factor) + (y * factor);
+        }
+        float scalar(float factor) { return dot(factor); }
+        // returns the Dot Product with two numbers
+        float dot(float xFactor, float yFactor)
+        {
+            return (x * xFactor) + (y * yFactor);
+        }
+        float scalar(float xFactor, float yFactor) { return dot(xFactor, yFactor); }
+
         // Get the angle in radians of the vector
         float heading(void)
         {
