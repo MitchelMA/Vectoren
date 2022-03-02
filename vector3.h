@@ -1,5 +1,4 @@
 #pragma once
-#define _USE_MATH_DEFINES
 #include <cmath>
 
 namespace MathVector
@@ -10,6 +9,13 @@ namespace MathVector
         float _x, _y, _z;
 
     public:
+        // Initialize vector with x, y and z set to 0
+        Vector3()
+        {
+            _x = 0;
+            _y = 0;
+            _z = 0;
+        };
         // Initialize vector with an x and a y value
         Vector3(float x, float y)
         {
@@ -38,19 +44,12 @@ namespace MathVector
         void setY(float y) { _y = y; };
         // Setter for Z
         void setZ(float z) { _z = z; };
+        // Setter for all
+        void set(float value) { _x = value, _y = value, _z = value; };
         // Setter for X and Y
-        void set(float x, float y)
-        {
-            _x = x;
-            _y = y;
-        };
+        void set(float x, float y) { _x = x, _y = y; };
         // Setter for X, Y and Z
-        void set(float x, float y, float z)
-        {
-            _x = x;
-            _y = y;
-            _z = z;
-        }
+        void set(float x, float y, float z) { _x = x, _y = y, _z = z; };
 
         // Get the magnitude of the vector
         float mag(void) { return sqrt(pow(_x, 2) + pow(_y, 2) + pow(_z, 2)); };
@@ -87,7 +86,7 @@ namespace MathVector
             if (m == 0)
                 return;
             norm();
-            // mult(2);
+            mult(2);
         }
 
         // Add another vector to this vector
@@ -98,20 +97,11 @@ namespace MathVector
             _z += vector.getZ();
         }
         // Add an input value to x, y and z
-        void add(float value) { _x, _y, _z += value; };
+        void add(float value) { _x += value, _y += value, _z += value; };
         // Add an x and y value
-        void add(float x, float y)
-        {
-            _x += x;
-            _y += y;
-        }
+        void add(float x, float y) { _x += x, _y += y; };
         // Add an x, y and z value
-        void add(float x, float y, float z)
-        {
-            _x += x;
-            _y += y;
-            _z += z;
-        }
+        void add(float x, float y, float z) { _x += x, _y += y, _z += z; };
 
         // Subtract a vector
         void sub(Vector3 vector)
@@ -121,20 +111,11 @@ namespace MathVector
             _z -= vector.getZ();
         }
         // Subtract an input value from x, y and z
-        void sub(float value) { _x, _y, _z -= value; };
+        void sub(float value) { _x -= value, _y -= value, _z -= value; };
         // Subtract an x and y value
-        void sub(float x, float y)
-        {
-            _x -= x;
-            _y -= y;
-        }
+        void sub(float x, float y) { _x -= x, _y -= y; };
         // Subtract an x, y and z value
-        void sub(float x, float y, float z)
-        {
-            _x -= x;
-            _y -= y;
-            _z -= z;
-        }
+        void sub(float x, float y, float z) { _x -= x, _y -= y, _z -= z; };
 
         // Multiply this vector with another vector
         void mult(Vector3 vector)
@@ -144,20 +125,11 @@ namespace MathVector
             _z *= vector.getZ();
         }
         // Multiply this vector with a factor
-        void mult(float factor) { _x, _y, _z *= factor; };
+        void mult(float factor) { _x *= factor, _y *= factor, _z *= factor; };
         // Multiply this vector's x and y value
-        void mult(float xFactor, float yFactor)
-        {
-            _x *= xFactor;
-            _y *= yFactor;
-        }
+        void mult(float xFactor, float yFactor) { _x *= xFactor, _y *= yFactor; };
         // Multiply this vector's x, y and z value
-        void mult(float xFactor, float yFactor, float zFactor)
-        {
-            _x *= xFactor;
-            _y *= yFactor;
-            _z *= zFactor;
-        }
+        void mult(float xFactor, float yFactor, float zFactor) { _x *= xFactor, _y *= yFactor, _z *= zFactor; };
 
         // Divide this vector by another vector
         void div(Vector3 vector)
@@ -167,20 +139,11 @@ namespace MathVector
             _z /= vector.getZ();
         }
         // Divide this vector by a given factor
-        void div(float factor) { _x, _y, _z /= factor; };
+        void div(float factor) { _x /= factor, _y /= factor, _z /= factor; };
         // Divide this vector's x and y value
-        void div(float xFactor, float yFactor)
-        {
-            _x /= xFactor;
-            _y /= yFactor;
-        }
+        void div(float xFactor, float yFactor) { _x /= xFactor, _y /= yFactor; };
         // Divide this vector's x, y and z value
-        void div(float xFactor, float yFactor, float zFactor)
-        {
-            _x /= xFactor;
-            _y /= yFactor;
-            _z /= zFactor;
-        }
+        void div(float xFactor, float yFactor, float zFactor) { _x /= xFactor, _y /= yFactor, _z /= zFactor; };
 
         // Returns the Dot Product of the two vectors
         float dot(Vector3 vector) { return _x * vector.getX() + _y * vector.getY() + _z * vector.getZ(); };
@@ -203,7 +166,7 @@ namespace MathVector
             static float ret[2] = {0};
             float Phi = atan2(_y, _x);
             float x_yMag = sqrt(pow(_x, 2) + pow(_y, 2));
-            float Theta = M_PI_2 - atan2(_z, x_yMag);
+            float Theta = 3.14159265359 / 2 - atan2(_z, x_yMag);
             ret[0] = Phi;
             ret[1] = Theta;
 

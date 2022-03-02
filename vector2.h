@@ -10,6 +10,12 @@ namespace MathVector
         float y;
 
     public:
+        // Initialize vector with x and y set to 0
+        Vector2()
+        {
+            x = 0;
+            y = 0;
+        }
         // Initialize vector with a given x and y value
         Vector2(float _x, float _y)
         {
