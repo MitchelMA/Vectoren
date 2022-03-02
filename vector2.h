@@ -162,24 +162,35 @@ namespace MathVector
         {
             return (x * vector.x) + (y * vector.y);
         }
+        // returns the Scalar Product of the two Vectors
         float scalar(Vector2 vector) { return dot(vector); }
         // returns the Dot Product with a number
         float dot(float factor)
         {
             return (x * factor) + (y * factor);
         }
+        // returns the Scalar Product with a number
         float scalar(float factor) { return dot(factor); }
         // returns the Dot Product with two numbers
         float dot(float xFactor, float yFactor)
         {
             return (x * xFactor) + (y * yFactor);
         }
+        // returns the Scalar Product with two numbers
         float scalar(float xFactor, float yFactor) { return dot(xFactor, yFactor); }
+
+        // returns the angle of two vectors
+        float angle(Vector2 vector)
+        {
+            float dotprod = dot(vector);
+            float totMag = mag() * vector.mag();
+            return acos(dotprod / totMag);
+        }
 
         // Get the angle in radians of the vector
         float heading(void)
         {
-            return atan(y / x);
+            return atan2(y, x);
         }
         // Copy this vector
         Vector2 *copy(void)
