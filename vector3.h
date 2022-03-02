@@ -90,11 +90,11 @@ namespace MathVector
         }
 
         // Add another vector to this vector
-        void add(Vector3 vector)
+        void add(Vector3 inVector)
         {
-            _x += vector.getX();
-            _y += vector.getY();
-            _z += vector.getZ();
+            _x += inVector._x;
+            _y += inVector._y;
+            _z += inVector._z;
         }
         // Add an input value to x, y and z
         void add(float value) { _x += value, _y += value, _z += value; };
@@ -104,11 +104,11 @@ namespace MathVector
         void add(float x, float y, float z) { _x += x, _y += y, _z += z; };
 
         // Subtract a vector
-        void sub(Vector3 vector)
+        void sub(Vector3 inVector)
         {
-            _x -= vector.getX();
-            _y -= vector.getY();
-            _z -= vector.getZ();
+            _x -= inVector._x;
+            _y -= inVector._y;
+            _z -= inVector._z;
         }
         // Subtract an input value from x, y and z
         void sub(float value) { _x -= value, _y -= value, _z -= value; };
@@ -118,11 +118,11 @@ namespace MathVector
         void sub(float x, float y, float z) { _x -= x, _y -= y, _z -= z; };
 
         // Multiply this vector with another vector
-        void mult(Vector3 vector)
+        void mult(Vector3 inVector)
         {
-            _x *= vector.getX();
-            _y *= vector.getY();
-            _z *= vector.getZ();
+            _x *= inVector._x;
+            _y *= inVector._y;
+            _z *= inVector._z;
         }
         // Multiply this vector with a factor
         void mult(float factor) { _x *= factor, _y *= factor, _z *= factor; };
@@ -132,11 +132,11 @@ namespace MathVector
         void mult(float xFactor, float yFactor, float zFactor) { _x *= xFactor, _y *= yFactor, _z *= zFactor; };
 
         // Divide this vector by another vector
-        void div(Vector3 vector)
+        void div(Vector3 inVector)
         {
-            _x /= vector.getX();
-            _y /= vector.getY();
-            _z /= vector.getZ();
+            _x /= inVector._x;
+            _y /= inVector._y;
+            _z /= inVector._z;
         }
         // Divide this vector by a given factor
         void div(float factor) { _x /= factor, _y /= factor, _z /= factor; };
@@ -146,9 +146,9 @@ namespace MathVector
         void div(float xFactor, float yFactor, float zFactor) { _x /= xFactor, _y /= yFactor, _z /= zFactor; };
 
         // Returns the Dot Product of the two vectors
-        float dot(Vector3 vector) { return _x * vector.getX() + _y * vector.getY() + _z * vector.getZ(); };
+        float dot(Vector3 inVector) { return _x * inVector._x + _y * inVector._y + _z * inVector._z; };
         // Returns the Scalar Product of the two vectors
-        float scalar(Vector3 vector) { return dot(vector); };
+        float scalar(Vector3 inVector) { return dot(inVector); };
         // Returns the Dot Product with a number
         float dot(float factor) { return _x * factor + _y * factor + _z * factor; };
         // returns the Scalar Product with a number

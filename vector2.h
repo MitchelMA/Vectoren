@@ -91,10 +91,10 @@ namespace MathVector
             mult(2);
         }
         // Add another vector to this vector
-        void add(Vector2 inputVector)
+        void add(Vector2 inVector)
         {
-            x += inputVector.getX();
-            y += inputVector.getY();
+            x += inVector.x;
+            y += inVector.y;
         }
         // Add an input value to both the x and y
         void add(float value)
@@ -109,10 +109,10 @@ namespace MathVector
             y += _y;
         }
         // Subtract a vector from this vector
-        void sub(Vector2 inputVector)
+        void sub(Vector2 inVector)
         {
-            x -= inputVector.getX();
-            y -= inputVector.getY();
+            x -= inVector.getX();
+            y -= inVector.getY();
         }
         // Subtract the input value form both the x and y
         void sub(float value)
@@ -127,10 +127,10 @@ namespace MathVector
             y -= _y;
         }
         // Multiply this vector with another vector
-        void mult(Vector2 vector)
+        void mult(Vector2 inVector)
         {
-            x *= vector.getX();
-            y *= vector.getY();
+            x *= inVector.x;
+            y *= inVector.y;
         }
         // Multiply this vector with a factor
         void mult(float fact)
@@ -145,10 +145,10 @@ namespace MathVector
             y *= yFactor;
         }
         // Divide this vector by another vector
-        void div(Vector2 vector)
+        void div(Vector2 inVector)
         {
-            x /= vector.getX();
-            y /= vector.getY();
+            x /= inVector.x;
+            y /= inVector.y;
         }
         // Divide this vector by a given factor
         void div(float fact)
@@ -164,12 +164,12 @@ namespace MathVector
         }
 
         // returns the Dot Product of the two Vectors
-        float dot(Vector2 vector)
+        float dot(Vector2 inVector)
         {
-            return (x * vector.x) + (y * vector.y);
+            return (x * inVector.x) + (y * inVector.y);
         }
         // returns the Scalar Product of the two Vectors
-        float scalar(Vector2 vector) { return dot(vector); }
+        float scalar(Vector2 inVector) { return dot(inVector); }
         // returns the Dot Product with a number
         float dot(float factor)
         {
@@ -186,10 +186,10 @@ namespace MathVector
         float scalar(float xFactor, float yFactor) { return dot(xFactor, yFactor); }
 
         // returns the angle of two vectors
-        float angle(Vector2 vector)
+        float angle(Vector2 inVector)
         {
-            float dotprod = dot(vector);
-            float totMag = mag() * vector.mag();
+            float dotprod = dot(inVector);
+            float totMag = mag() * inVector.mag();
             return acos(dotprod / totMag);
         }
 
