@@ -160,8 +160,8 @@ public:
         return atan(y / x);
     }
     // Copy this vector
-    Vector copy(void)
+    Vector *copy(void)
     {
-        return Vector(x, y);
+        return new Vector(x, y);
     }
 };
