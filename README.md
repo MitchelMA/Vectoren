@@ -36,12 +36,12 @@ MathVector::Vector3::set(float x, float y, float z); // zet x, y en z gelijk aan
 ```
 Het is ook mogelijk om de Magnitude te krijgen of te setten:
 ```cpp
-float MathVector::Vector3::mag(void);                   // Deze method returned de magnitude van de vector
-MathVector::Vector3::setMag(float magnitude);       // Deze method zet de waarde van de magnitude
+float MathVector::Vector3::mag(void);         // Deze method returned de magnitude van de vector
+MathVector::Vector3::setMag(float magnitude); // Deze method zet de waarde van de magnitude
 ```
 Je kan de Vector normalizeren of limiten:
 ```cpp
-MathVector::Vector3::norm(void);           // normaliseert de vector
+MathVector::Vector3::norm(void);       // normaliseert de vector
 MathVector::Vector3::limit(float max); // Limits de vector
 ```
 Je kan berekeninge maken met de vector:
@@ -81,13 +81,13 @@ Het is ook mogelijk om de direction van de Vector te krijgen:
 // deze function returned een float-array waar 
 // index 0: de x-y direction is en,
 // index 1: de direction van de z-as naar de vector is
-float* MathVector::Vector3::*heading(void) 
+float *MathVector::Vector3::heading(void) 
 ```
 
 En natuurlijk kan je een vector kopiëren:
 ```cpp
 // deze function returned een pointer naar een MathVector::Vector3 class
-MathVector::Vector3* MathVector::Vector3::*copy(void) 
+MathVector::Vector3 *MathVector::Vector3::copy(void) 
 ```
 
 ## Verschillen
