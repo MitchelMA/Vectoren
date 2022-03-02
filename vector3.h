@@ -186,11 +186,19 @@ namespace MathVector
         float dot(Vector3 vector) { return _x * vector.getX() + _y * vector.getY() + _z * vector.getZ(); };
         // Returns the Scalar Product of the two vectors
         float scalar(Vector3 vector) { return dot(vector); };
+        // Returns the Dot Product with a number
+        float dot(float factor) { return _x * factor + _y * factor + _z * factor; };
+        // returns the Scalar Product with a number
+        float scalar(float factor) { return dot(factor); };
+        // Returns the Dot Product with three numbers
+        float dot(float xFactor, float yFactor, float zFactor) { return _x * xFactor + _y * yFactor + _z * zFactor; };
+        // Returns the Scalar Porduct with three numbers
+        float scalar(float xFactor, float yFactor, float zFactor) { return dot(xFactor, yFactor, zFactor); };
 
         // Returns a float array with a length of 2
         // Index 0: x-y plane direction
         // Index 1: angle from z axis to the vector itself
-        float *heading()
+        float *heading(void)
         {
             static float ret[2] = {0};
             float Phi = atan2(_y, _x);
@@ -200,6 +208,12 @@ namespace MathVector
             ret[1] = Theta;
 
             return ret;
+        }
+
+        // Copy this vector
+        Vector3 *copy(void)
+        {
+            return new Vector3(_x, _y, _z);
         }
     };
 }
