@@ -7,13 +7,13 @@ De namespace is *MathVector*
 Het initializeren van een nieuwe Vector kan op 3 manieren:
 ```cpp
 // Initializeert een vector op het nullpunt
-MathVector::Vector3 MathVector::Vector3();
+MathVector::Vector3::Vector3();
 
 // Initializeert een vector met een x en y waarde
-MathVector::Vector3 MathVector::Vector3(float x, float y);
+MathVector::Vector3::Vector3(float x, float y);
 
 // Initializeert een vector met een x, y en z waarde
-MathVector::Vector3 MathVector::Vector3(float x, float y, float z);
+MathVector::Vector3::Vector3(float x, float y, float z);
 ```
 
 Omdat de x, y en z waarde privates zijn, zijn er *Getters*:
@@ -95,7 +95,7 @@ Er zitten ook wat verschillen tussen de Vector3 en Vector2.
 Zo heb je, logischerwijs, geen z-as bij een Vector2; maar dat niet alleen:
 ```cpp
 // een Vector2 kan ook op een andere manier initialized worden:
-MathVector::Vector2 MathVector::Vector2(double angleRad); // deze function zal een Vector2 class initializeren met een gegeven hoek in radialen
+MathVector::Vector2::Vector2(double angleRad); // deze function zal een Vector2 class initializeren met een gegeven hoek in radialen
 
 // De heading() is geen pointer naar een float-array:
 float MathVector::Vector2::heading();
