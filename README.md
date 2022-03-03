@@ -4,10 +4,13 @@ Iedere Vector-soort staat in een apart bestand.
 De namespace is *MathVector*
 
 ## Gebruik
-Het initializeren van een nieuwe Vector kan op 3 manieren:
+Het initializeren van een nieuwe Vector kan op 4 manieren:
 ```cpp
 // Initializeert een vector op het nullpunt
 MathVector::Vector3::Vector3();
+
+// Initializeert een vector waar de x, y en z gelijk zijn aan "value"
+MathVector::Vector3::Vector3(float value);
 
 // Initializeert een vector met een x en y waarde
 MathVector::Vector3::Vector3(float x, float y);

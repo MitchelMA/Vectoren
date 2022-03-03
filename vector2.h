@@ -33,10 +33,15 @@ namespace MathVector
         float getX(void) { return x; };
         // Getter for Y
         float getY(void) { return y; };
+
         // Setter for X
         void setX(float _x) { x = _x; };
         // Setter for Y
         void setY(float _y) { y = _y; };
+
+        // Setter for both X and Y
+        void set(float value) { x = value, y = value; };
+
         // Setter for X and Y
         void set(float _x, float _y) { x = _x, y = _y; };
 

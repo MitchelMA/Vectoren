@@ -16,6 +16,13 @@ namespace MathVector
             _y = 0;
             _z = 0;
         };
+        // Initialize vector with x, y and z set to "value"
+        Vector3(float value)
+        {
+            _x = value;
+            _y = value;
+            _z = value;
+        }
         // Initialize vector with an x and a y value
         Vector3(float x, float y)
         {
