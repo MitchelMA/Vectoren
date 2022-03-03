@@ -215,7 +215,7 @@ namespace MathVector
         // Divide this vector by another vector
         void operator/=(const Vector3 &inVector) { this->div(inVector); };
         // Divide this vector by a number
-        void operator/=(const float &value) { this->div(value); };
+        void operator/=(const float &factor) { this->div(factor); };
         // Divide a vector by another vector
         Vector3 *operator/(const Vector3 &inVector)
         {

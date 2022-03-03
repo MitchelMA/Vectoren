@@ -4,6 +4,7 @@ Iedere Vector-soort staat in een apart bestand.
 De namespace is *MathVector*
 
 ## Gebruik
+### standaard Methods
 Het initializeren van een nieuwe Vector kan op 4 manieren:
 ```cpp
 // Initializeert een vector op het nullpunt
@@ -91,6 +92,47 @@ En natuurlijk kan je een vector kopiëren:
 ```cpp
 // deze function returned een pointer naar een MathVector::Vector3 class
 MathVector::Vector3 *MathVector::Vector3::copy(void) 
+```
+
+### Operator overload
+Ik gebruik voor de volgende operator overloads *Vector3* als voorbeeld. *Vector3* en *Vector2* zijn  
+volledig hetzelfde, behalve dat de input en return values bij de *Vector2* class, *Vector2*s zijn.  
+  
+Zo kan je een waarde toevoegen aan een vector of de totaal waarde berekenen:
+```cpp
+// Waarde toevoegen:
+void MathVector::Vector3::operator+=(const MathVector::Vector3 &inVector); // deze operator voegd een Vector3 toe aan de huidige vector
+void MathVector::Vector3::operator+=(const float &value);                  // deze operator voegd een getal toe aan de x, y en z van de huidige vector
+
+// Totaal berekenen:
+MathVector::Vector3 *MathVector::Vector3::operator+(const MathVector::Vector3 &inVector); // deze operator berekent het totaal van 2 vectoren, en returned dit als een Vector3*
+MathVector::Vector3 *MathVector::Vector3::operator+(const float &value);                  // deze operator berekent het totaal van een vector en een getal, en returned dit als een Vector3*
+```
+Je kan Vectoren van elkaar afhalen of het verschil berekenen:
+```cpp
+// Waarde afhalen:
+void MathVector::Vector3::operator-=(const MathVector::Vector3 &inVector); // deze operator haalt een vector van de huidige vector af
+void MathVector::Vector3::operator-=(const float &value);                  // deze operator haalt een getal van de x, y en z waarde af
+
+// Bereken verschil:
+MathVector::Vector3 *MathVector::Vector3::operator-(const MathVector::Vector3 &inVector); // deze operator berekent het verschil tussen twee vectoren, en returned dit als een Vector3*
+MathVector::Vector3 *MathVector::Vector3::operator-(const float &value);                  // deze operator berekent het verschil tussen een vector en een getal, en returned dit als een Vector3*
+```
+Je kan Vectoren vermenigvuldigen:
+```cpp
+void MathVector::Vector3::operator*=(const MathVector::Vector3 &inVector); // deze operator vermenigvuldigd de huidige vector met een andere vector
+void MathVector::Vector3::operator*=(const float &factor);                 // deze operator vermenigvuldigd de x, y en z van de huidige vector met de factor
+
+MathVector::Vector3 *MathVector::Vector3::operator*(const MathVector::Vector3 &inVector); // deze operator vermenigvuldig twee vectoren met elkaar, en returned dit als een Vector3*
+MathVector::Vector3 *MathVector::Vector3::operator*(const float &factor);                 // deze operator vermenigvuldig een vector met een factor, en returned dit als een Vector3*
+```
+En als laatst, je kan vectoren ook delen
+```cpp
+void MathVector::Vector3::operator/=(const MathVector::Vector3 &inVector); // deze operator deelt de huidige vector door een Vector3
+void MathVector::Vector3::operator/=(const float &factor);                 // deze operator deelt de x, y en z waarden van de huidige vector door een factor
+
+MathVector::Vector3 *MathVector::Vector3::operator/(const MathVector::Vector3 &inVector); // deze operator deelt twee vectoren door elkaar, en returned de waarde als een Vector3*
+MathVector::Vector3 *MathVector::Vector3::operator/(const float &factor);                 // deze operator deelt een vector door een factor, en returned de waarde als een Vector3*
 ```
 
 ## Verschillen
