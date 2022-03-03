@@ -37,7 +37,7 @@ MathVector::Vector3::set(float value);               // zet x, y en z gelijk aan
 MathVector::Vector3::set(float x, float y);          // zet x en y gelijk aan de ingevoerde "x" en "y"
 MathVector::Vector3::set(float x, float y, float z); // zet x, y en z gelijk aan de ingevoerde "x", "y" en "z"
 ```
-Het is ook mogelijk om de Magnitude te krijgen of te setten:
+Het is ook mogelijk om de Magnitude te getten of te setten:
 ```cpp
 float MathVector::Vector3::mag(void);         // Deze method returned de magnitude van de vector
 MathVector::Vector3::setMag(float magnitude); // Deze method zet de waarde van de magnitude
@@ -47,7 +47,7 @@ Je kan de Vector normalizeren of limiten:
 MathVector::Vector3::norm(void);       // normaliseert de vector
 MathVector::Vector3::limit(float max); // Limits de vector
 ```
-Je kan berekeninge maken met de vector:
+Je kan berekeningen maken met de vector:
 ```cpp
 // De add function:
 MathVector::Vector3::add(MathVector::Vector3 inVector); // deze function voegt een andere vector toe

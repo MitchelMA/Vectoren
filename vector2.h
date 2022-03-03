@@ -38,12 +38,12 @@ namespace MathVector
         void setX(float _x) { x = _x; };
         // Setter for Y
         void setY(float _y) { y = _y; };
-
         // Setter for both X and Y
         void set(float value) { x = value, y = value; };
-
         // Setter for X and Y
         void set(float _x, float _y) { x = _x, y = _y; };
+        // set the x, y and z value of the vector
+        void operator=(const float &value) { x = value, y = value; };
 
         // Get the magnitude of the vector
         float mag(void) { return sqrt(pow(x, 2) + pow(y, 2)); };
@@ -87,12 +87,50 @@ namespace MathVector
         // Add an x and y value seperately to the x and y value
         void add(float _x, float _y) { x += _x, y += _y; };
 
+        // Add another vector to this vector
+        void operator+=(const Vector2 &inVector) { this->add(inVector); };
+        // Add a number to this vector
+        void operator+=(const float &value) { this->add(value); };
+        // Get the sum of the two vectors
+        Vector2 *operator+(const Vector2 &inVector)
+        {
+            Vector2 *vec = this->copy();
+            vec->add(inVector);
+            return vec;
+        }
+        // Get the sum between a number and a vector
+        Vector2 *operator+(const float &value)
+        {
+            Vector2 *vec = this->copy();
+            vec->add(value);
+            return vec;
+        }
+
         // Subtract a vector from this vector
         void sub(Vector2 inVector) { x -= inVector.x, y -= inVector.x; };
         // Subtract the input value form both the x and y
         void sub(float value) { x -= value, y -= value; };
         // Subtract an x and a y value from this vector
         void sub(float _x, float _y) { x -= _x, y -= _y; };
+
+        // Subtract a vector from this vector
+        void operator-=(const Vector2 &inVector) { this->sub(inVector); };
+        // Subtract a number from this vector
+        void operator-=(const float &value) { this->sub(value); };
+        // Get the difference between the two vectors
+        Vector2 *operator-(const Vector2 &inVector)
+        {
+            Vector2 *vec = this->copy();
+            vec->sub(inVector);
+            return vec;
+        }
+        // Get the difference between a number and a vector
+        Vector2 *operator-(const float &value)
+        {
+            Vector2 *vec = this->copy();
+            vec->sub(value);
+            return vec;
+        }
 
         // Multiply this vector with another vector
         void mult(Vector2 inVector) { x *= inVector.x, y *= inVector.y; };
@@ -101,12 +139,50 @@ namespace MathVector
         // Multiply this vector by a given x and y value
         void mult(float xFactor, float yFactor) { x *= xFactor, y *= yFactor; };
 
+        // Multiply this vector with another vector
+        void operator*=(const Vector2 &inVector) { this->mult(inVector); };
+        // Multiply this vector by a number
+        void operator*=(const float &factor) { this->mult(factor); };
+        // Multiply two vectors with each other
+        Vector2 *operator*(const Vector2 &inVector)
+        {
+            Vector2 *vec = this->copy();
+            vec->mult(inVector);
+            return vec;
+        }
+        // Multiply a vector with a number
+        Vector2 *operator*(const float &factor)
+        {
+            Vector2 *vec = this->copy();
+            vec->mult(factor);
+            return vec;
+        }
+
         // Divide this vector by another vector
         void div(Vector2 inVector) { x /= inVector.x, y /= inVector.y; };
         // Divide this vector by a given factor
         void div(float fact) { x /= fact, y /= fact; };
         // Divide this vector by a given x and y value
         void div(float xFactor, float yFactor) { x /= xFactor, y /= yFactor; };
+
+        // Divide this vector with another vector
+        void operator/=(const Vector2 &inVector) { this->div(inVector); };
+        // Divide this vector by a number
+        void operator/=(const float &factor) { this->div(factor); };
+        // Divide two vectors by each other
+        Vector2 *operator/(const Vector2 &inVector)
+        {
+            Vector2 *vec = this->copy();
+            vec->div(inVector);
+            return vec;
+        }
+        // Divide a vector by a number
+        Vector2 *operator/(const float &factor)
+        {
+            Vector2 *vec = this->copy();
+            vec->div(factor);
+            return vec;
+        }
 
         // returns the Dot Product of the two Vectors
         float dot(Vector2 inVector) { return (x * inVector.x) + (y * inVector.y); };
