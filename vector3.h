@@ -174,9 +174,6 @@ namespace MathVector
         }
 
         // Copy this vector
-        Vector3 *copy(void)
-        {
-            return new Vector3(_x, _y, _z);
-        }
+        Vector3 *copy(void) { return new Vector3(_x, _y, _z); };
     };
 }
