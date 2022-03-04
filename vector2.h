@@ -74,10 +74,10 @@ namespace MathVector
         void limit(float max)
         {
             float m = mag();
-            if (m < max)
+            if (m == 0 || m < max)
                 return;
             norm();
-            mult(2);
+            setMag(max);
         }
 
         // Add another vector to this vector
