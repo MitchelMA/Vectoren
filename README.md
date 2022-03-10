@@ -130,7 +130,7 @@ Zo heb je, logischerwijs, geen z-as bij een Vector2; maar dat niet alleen:
 MathVector::Vector2::Vector2(double angleRad); // deze function zal een Vector2 class initializeren met een gegeven hoek in radialen
 
 // Deze Method returned een pointer naar een Vector2 die gelijk is aan de vector waar deze method op gecalled, maar die staat dan onder de gegeven hoek ten opzichte van de vector waar die op gecalled was
-MathVector::Vetor2 *MathVector::Vector2::rotatedBy(float radians)
+MathVector::Vector2 *MathVector::Vector2::rotatedBy(float radians)
 
 // De heading() is geen pointer naar een float-array:
 float MathVector::Vector2::heading();
