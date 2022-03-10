@@ -19,21 +19,8 @@ MathVector::Vector3::Vector3(float x, float y);
 // Initializeert een vector met een x, y en z waarde
 MathVector::Vector3::Vector3(float x, float y, float z);
 ```
-
-Omdat de x, y en z waarde privates zijn, zijn er *Getters*:
+er zijn *Setters*:
 ```cpp
-float MathVector::Vector3::getX(void); // returned de waarde van x
-float MathVector::Vector3::getY(void); // returned de waarde van y
-float MathVector::Vector3::getZ(void); // returned de waarde van z
-```
-Ook zijn er *Setters*:
-```cpp
-// Setters for specifiek x, y en z
-MathVector::Vector3::setX(float x); // zet de waarde van x
-MathVector::Vector3::setY(float y); // zet de waarde van y
-MathVector::Vector3::setZ(float z); // zet de waarde van z
-
-// Andere setters
 MathVector::Vector3::set(float value);               // zet x, y en z gelijk aan "value"
 MathVector::Vector3::set(float x, float y);          // zet x en y gelijk aan de ingevoerde "x" en "y"
 MathVector::Vector3::set(float x, float y, float z); // zet x, y en z gelijk aan de ingevoerde "x", "y" en "z"
@@ -141,6 +128,9 @@ Zo heb je, logischerwijs, geen z-as bij een Vector2; maar dat niet alleen:
 ```cpp
 // een Vector2 kan ook op een andere manier initialized worden:
 MathVector::Vector2::Vector2(double angleRad); // deze function zal een Vector2 class initializeren met een gegeven hoek in radialen
+
+// Deze Method returned een pointer naar een Vector2 die gelijk is aan de vector waar deze method op gecalled, maar die staat dan onder de gegeven hoek ten opzichte van de vector waar die op gecalled was
+MathVector::Vetor2 *MathVector::Vector2::rotatedBy(float radians)
 
 // De heading() is geen pointer naar een float-array:
 float MathVector::Vector2::heading();
