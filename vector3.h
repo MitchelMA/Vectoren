@@ -228,6 +228,14 @@ namespace MathVector
         // Returns the Scalar Porduct with three numbers
         float scalar(float xFactor, float yFactor, float zFactor) { return dot(xFactor, yFactor, zFactor); };
 
+        // returns the angle of two vectors
+        float angle(Vector3 inVector)
+        {
+            float dotprod = dot(inVector);
+            float totMag = mag() * inVector.mag();
+            return acos(dotprod / totMag);
+        }
+
         // Returns a float array with a length of 2
         // Index 0: x-y plane direction
         // Index 1: angle from z axis to the vector itself

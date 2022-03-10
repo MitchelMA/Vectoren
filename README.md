@@ -65,6 +65,9 @@ MathVector::Vector3::div(float xFactor, float yFactor, float zFactor) // deze fu
 float MathVector::Vector3::dot(MathVector::Vector3 inVector); // deze function returned de Dot Product van twee vectoren
 float MathVector::Vector3::dot(float factor);                 // deze function returned de Dot product van de vector en de gegeven factor
 float MathVector::Vector3::dot(float xFactor, float yFactor, float zFactor); // deze function returned de Dot product van de vector en de x,y en z factoren
+
+// iets wat heel dicht bij de dot product ligt is het berekenen van een hoek tussen twee vectoren:
+float MathVector::Vector3::angle(MathVector::Vector3 inVector);
 ```
 
 Het is ook mogelijk om de direction van de Vector te krijgen:
@@ -134,7 +137,4 @@ MathVector::Vector2 *MathVector::Vector2::rotatedBy(float radians)
 
 // De heading() is geen pointer naar een float-array:
 float MathVector::Vector2::heading();
-
-// Ook kan je de hoek in graden tussen twee Vector2 berekenen:
-float MathVector::Vector2::angle(MathVector::Vector2 inVector);
 ```
