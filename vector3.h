@@ -3,65 +3,49 @@
 
 namespace MathVector
 {
-    class Vector3
+    struct Vector3
     {
-    private:
-        float _x, _y, _z;
 
     public:
+        float x, y, z;
         // Initialize vector with x, y and z set to 0
         Vector3()
         {
-            _x = 0;
-            _y = 0;
-            _z = 0;
+            x = 0;
+            y = 0;
+            z = 0;
         };
         // Initialize vector with x, y and z set to "value"
         Vector3(float value)
         {
-            _x = value;
-            _y = value;
-            _z = value;
+            x = value;
+            y = value;
+            z = value;
         }
         // Initialize vector with an x and a y value
-        Vector3(float x, float y)
+        Vector3(float _x, float _y)
         {
-            _x = x;
-            _y = y;
-            _z = 0;
+            x = _x;
+            y = _y;
+            z = 0;
         }
         // Initialize vector with an x, y and z value
-        Vector3(float x, float y, float z)
+        Vector3(float _x, float _y, float _z)
         {
-            _x = x;
-            _y = y;
-            _z = z;
+            x = _x;
+            y = _y;
+            z = _z;
         }
 
-        // Getter for X
-        float getX(void) { return _x; };
-        // Getter for Y
-        float getY(void) { return _y; };
-        // Getter for Z
-        float getZ(void) { return _z; };
-
-        // Setter for X
-        void setX(float x) { _x = x; };
-        // Setter for Y
-        void setY(float y) { _y = y; };
-        // Setter for Z
-        void setZ(float z) { _z = z; };
         // Setter for all
-        void set(float value) { _x = value, _y = value, _z = value; };
+        void set(float value) { x = value, y = value, z = value; };
         // Setter for X and Y
-        void set(float x, float y) { _x = x, _y = y; };
+        void set(float _x, float _y) { x = _x, y = _y; };
         // Setter for X, Y and Z
-        void set(float x, float y, float z) { _x = x, _y = y, _z = z; };
-        // set the x, y and z value of the vector
-        void operator=(const float &value) { _x = value, _y = value, _z = value; };
+        void set(float _x, float _y, float _z) { x = _x, y = _y, z = _z; };
 
         // Get the magnitude of the vector
-        float mag(void) { return sqrt(pow(_x, 2) + pow(_y, 2) + pow(_z, 2)); };
+        float mag(void) { return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)); };
 
         // Set the magnitude of the vector
         // Will only work if the current magnitude is not equal to 0
@@ -70,9 +54,9 @@ namespace MathVector
             float m = mag();
             if (m == 0)
                 return;
-            _x = (_x / m) * magnitude;
-            _y = (_y / m) * magnitude;
-            _z = (_z / m) * magnitude;
+            x = (x / m) * magnitude;
+            y = (y / m) * magnitude;
+            z = (z / m) * magnitude;
         }
 
         // Normalizes the vector
@@ -82,9 +66,9 @@ namespace MathVector
             float m = mag();
             if (m == 0)
                 return;
-            _x /= m;
-            _y /= m;
-            _z /= m;
+            x /= m;
+            y /= m;
+            z /= m;
         }
 
         // Limits the magnitude of the vector
@@ -101,16 +85,16 @@ namespace MathVector
         // Add another vector to this vector
         void add(Vector3 inVector)
         {
-            _x += inVector._x;
-            _y += inVector._y;
-            _z += inVector._z;
+            x += inVector.x;
+            y += inVector.y;
+            z += inVector.z;
         }
         // Add an input value to x, y and z
-        void add(float value) { _x += value, _y += value, _z += value; };
+        void add(float value) { x += value, y += value, z += value; };
         // Add an x and y value
-        void add(float x, float y) { _x += x, _y += y; };
+        void add(float _x, float _y) { x += _x, y += _y; };
         // Add an x, y and z value
-        void add(float x, float y, float z) { _x += x, _y += y, _z += z; };
+        void add(float _x, float _y, float _z) { x += _x, y += _y, z += _z; };
 
         // Add another vector to this vector
         void operator+=(const Vector3 &inVector) { this->add(inVector); };
@@ -135,16 +119,16 @@ namespace MathVector
         // Subtract a vector
         void sub(Vector3 inVector)
         {
-            _x -= inVector._x;
-            _y -= inVector._y;
-            _z -= inVector._z;
+            x -= inVector.x;
+            y -= inVector.y;
+            z -= inVector.z;
         }
         // Subtract an input value from x, y and z
-        void sub(float value) { _x -= value, _y -= value, _z -= value; };
+        void sub(float value) { x -= value, y -= value, z -= value; };
         // Subtract an x and y value
-        void sub(float x, float y) { _x -= x, _y -= y; };
+        void sub(float _x, float _y) { x -= _x, y -= _y; };
         // Subtract an x, y and z value
-        void sub(float x, float y, float z) { _x -= x, _y -= y, _z -= z; };
+        void sub(float _x, float _y, float _z) { x -= _x, y -= _y, z -= _z; };
 
         // Subtract a vector
         void operator-=(const Vector3 &inVector) { this->sub(inVector); };
@@ -168,16 +152,16 @@ namespace MathVector
         // Multiply this vector with another vector
         void mult(Vector3 inVector)
         {
-            _x *= inVector._x;
-            _y *= inVector._y;
-            _z *= inVector._z;
+            x *= inVector.x;
+            y *= inVector.y;
+            z *= inVector.z;
         }
         // Multiply this vector with a factor
-        void mult(float factor) { _x *= factor, _y *= factor, _z *= factor; };
+        void mult(float factor) { x *= factor, y *= factor, z *= factor; };
         // Multiply this vector's x and y value
-        void mult(float xFactor, float yFactor) { _x *= xFactor, _y *= yFactor; };
+        void mult(float xFactor, float yFactor) { x *= xFactor, y *= yFactor; };
         // Multiply this vector's x, y and z value
-        void mult(float xFactor, float yFactor, float zFactor) { _x *= xFactor, _y *= yFactor, _z *= zFactor; };
+        void mult(float xFactor, float yFactor, float zFactor) { x *= xFactor, y *= yFactor, z *= zFactor; };
 
         // Multiply this vector with another vector
         void operator*=(const Vector3 &inVector) { this->mult(inVector); };
@@ -201,16 +185,16 @@ namespace MathVector
         // Divide this vector by another vector
         void div(Vector3 inVector)
         {
-            _x /= inVector._x;
-            _y /= inVector._y;
-            _z /= inVector._z;
+            x /= inVector.x;
+            y /= inVector.y;
+            z /= inVector.z;
         }
         // Divide this vector by a given factor
-        void div(float factor) { _x /= factor, _y /= factor, _z /= factor; };
+        void div(float factor) { x /= factor, y /= factor, z /= factor; };
         // Divide this vector's x and y value
-        void div(float xFactor, float yFactor) { _x /= xFactor, _y /= yFactor; };
+        void div(float xFactor, float yFactor) { x /= xFactor, y /= yFactor; };
         // Divide this vector's x, y and z value
-        void div(float xFactor, float yFactor, float zFactor) { _x /= xFactor, _y /= yFactor, _z /= zFactor; };
+        void div(float xFactor, float yFactor, float zFactor) { x /= xFactor, y /= yFactor, z /= zFactor; };
 
         // Divide this vector by another vector
         void operator/=(const Vector3 &inVector) { this->div(inVector); };
@@ -232,15 +216,15 @@ namespace MathVector
         }
 
         // Returns the Dot Product of the two vectors
-        float dot(Vector3 inVector) { return _x * inVector._x + _y * inVector._y + _z * inVector._z; };
+        float dot(Vector3 inVector) { return x * inVector.x + y * inVector.y + z * inVector.z; };
         // Returns the Scalar Product of the two vectors
         float scalar(Vector3 inVector) { return dot(inVector); };
         // Returns the Dot Product with a number
-        float dot(float factor) { return _x * factor + _y * factor + _z * factor; };
+        float dot(float factor) { return x * factor + y * factor + z * factor; };
         // returns the Scalar Product with a number
         float scalar(float factor) { return dot(factor); };
         // Returns the Dot Product with three numbers
-        float dot(float xFactor, float yFactor, float zFactor) { return _x * xFactor + _y * yFactor + _z * zFactor; };
+        float dot(float xFactor, float yFactor, float zFactor) { return x * xFactor + y * yFactor + z * zFactor; };
         // Returns the Scalar Porduct with three numbers
         float scalar(float xFactor, float yFactor, float zFactor) { return dot(xFactor, yFactor, zFactor); };
 
@@ -250,9 +234,9 @@ namespace MathVector
         float *heading(void)
         {
             static float ret[2] = {0};
-            float Phi = atan2(_y, _x);
-            float x_yMag = sqrt(pow(_x, 2) + pow(_y, 2));
-            float Theta = 3.14159265359 / 2 - atan2(_z, x_yMag);
+            float Phi = atan2(y, x);
+            float x_yMag = sqrt(pow(x, 2) + pow(y, 2));
+            float Theta = 3.14159265359 / 2 - atan2(z, x_yMag);
             ret[0] = Phi;
             ret[1] = Theta;
 
@@ -260,6 +244,6 @@ namespace MathVector
         }
 
         // Copy this vector
-        Vector3 *copy(void) { return new Vector3(_x, _y, _z); };
+        Vector3 *copy(void) { return new Vector3(x, y, z); };
     };
 }

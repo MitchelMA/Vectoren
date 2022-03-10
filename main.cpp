@@ -22,17 +22,17 @@ int main(void)
      cout << endl;
 
      cout << "Add 3 to the x:" << endl;
-     MyVec3One->add(Vector3(3, 0, 0));
+     MyVec3One->x += 3;
      cordsPrint(MyVec3One);
      cout << endl;
 
      cout << "Add 4 to the y:" << endl;
-     MyVec3One->add(Vector3(0, 4, 0));
+     MyVec3One->y += 4;
      cordsPrint(MyVec3One);
      cout << endl;
 
      cout << "Add 5 to the z:" << endl;
-     MyVec3One->add(Vector3(0, 0, 5));
+     MyVec3One->z += 5;
      cordsPrint(MyVec3One);
      cout << endl;
 
@@ -87,9 +87,9 @@ int main(void)
 
 void cordsPrint(Vector3 *vector)
 {
-     printf("(%0.2f, %0.2f, %0.2f)\n", vector->getX(), vector->getY(), vector->getZ());
+     printf("(%0.2f, %0.2f, %0.2f)\n", vector->x, vector->y, vector->z);
 }
 void cordsPrint(Vector2 *vector)
 {
-     printf("(%0.2f, %0.2f)\n", vector->getX(), vector->getY());
+     printf("(%0.2f, %0.2f)\n", vector->x, vector->y);
 }

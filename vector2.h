@@ -3,13 +3,11 @@
 
 namespace MathVector
 {
-    class Vector2
+    struct Vector2
     {
-    private:
-        float x;
-        float y;
 
     public:
+        float x, y;
         // Initialize vector with x and y set to 0
         Vector2()
         {
@@ -29,21 +27,8 @@ namespace MathVector
             y = sin(angleRad);
         }
 
-        // Getter for X;
-        float getX(void) { return x; };
-        // Getter for Y
-        float getY(void) { return y; };
-
-        // Setter for X
-        void setX(float _x) { x = _x; };
-        // Setter for Y
-        void setY(float _y) { y = _y; };
         // Setter for both X and Y
         void set(float value) { x = value, y = value; };
-        // Setter for X and Y
-        void set(float _x, float _y) { x = _x, y = _y; };
-        // set the x, y and z value of the vector
-        void operator=(const float &value) { x = value, y = value; };
 
         // Get the magnitude of the vector
         float mag(void) { return sqrt(pow(x, 2) + pow(y, 2)); };
