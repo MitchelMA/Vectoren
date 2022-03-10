@@ -190,6 +190,23 @@ namespace MathVector
             return acos(dotprod / totMag);
         }
 
+        // returns the vector rotated by the given angle
+        Vector2 *rotatedBy(float radians)
+        {
+            // this method uses the following matrix-transform:
+            // | COS θ  -SIN θ | | Vx |
+            // | SIN θ   COS θ | | Vy |
+            // where θ is the given angle in radians and V the vector the method was called on
+
+            // calculate the dot-product of (COS θ, -SIN θ) * (Vx, Vy)
+            float newX = cos(radians) * this->x + -sin(radians) * this->y;
+
+            // calculate the dot-product of (SIN θ, COS θ) * (Vx, Vy)
+            float newY = sin(radians) * this->x + cos(radians) * this->y;
+
+            return new Vector2(newX, newY);
+        }
+
         // Get the angle in radians of the vector
         float heading(void) { return atan2(y, x); };
         // Copy this vector

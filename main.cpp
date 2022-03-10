@@ -81,6 +81,14 @@ int main(void)
      MyVec3One->norm();
      cordsPrint(MyVec3One);
      cout << "Magnitude: " << MyVec3One->mag() << endl;
+     cout << endl;
+
+     cout << "Create a 2d vector: " << endl;
+     Vector2 *test = new Vector2(0.5, 0.3);
+     cordsPrint(test);
+     cout << "Rotate this vector by 45 degrees: " << endl;
+     test = test->rotatedBy(45 * PI / 180);
+     cordsPrint(test);
 
      return 0;
 }
