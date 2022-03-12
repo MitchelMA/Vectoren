@@ -243,7 +243,6 @@ namespace MathVector
         {
             static float ret[2] = {0};
             float Phi = atan2(y, x);
-            float x_yMag = sqrt(pow(x, 2) + pow(y, 2));
             // in this case: the Z is the opposite side, and the magnitude of the vector is the hypotenuse
             // using the arccosine you get the angle from the Z-axis to the vector
             float Theta = acos(z / mag());
