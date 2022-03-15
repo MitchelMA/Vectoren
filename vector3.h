@@ -45,25 +45,25 @@ namespace MathVector
         void set(float _x, float _y, float _z) { x = _x, y = _y, z = _z; };
 
         // Get the magnitude of the vector
-        float mag(void) { return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)); };
+        float magnitude(void) { return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)); };
 
         // Set the magnitude of the vector
         // Will only work if the current magnitude is not equal to 0
-        void setMag(float magnitude)
+        void setMag(float mag)
         {
-            float m = mag();
+            float m = magnitude();
             if (m == 0)
                 return;
-            x = (x / m) * magnitude;
-            y = (y / m) * magnitude;
-            z = (z / m) * magnitude;
+            x = (x / m) * mag;
+            y = (y / m) * mag;
+            z = (z / m) * mag;
         }
 
         // Normalizes the vector
         // Will only work if the current magnitude is not equal to 0
-        void norm(void)
+        void normalize(void)
         {
-            float m = mag();
+            float m = magnitude();
             if (m == 0)
                 return;
             x /= m;
@@ -71,14 +71,22 @@ namespace MathVector
             z /= m;
         }
 
+        // Returns the unit-vector of this vector
+        Vector3 *normalized()
+        {
+            Vector3 *temp = this->copy();
+            temp->normalize();
+            return temp;
+        }
+
         // Limits the magnitude of the vector
         // Will only work if the current magnitude is not equal to 0
         void limit(float max)
         {
-            float m = mag();
+            float m = magnitude();
             if (m == 0 || m < max)
                 return;
-            norm();
+            normalize();
             setMag(max);
         }
 
@@ -228,11 +236,17 @@ namespace MathVector
         // Returns the Scalar Porduct with three numbers
         float scalar(float xFactor, float yFactor, float zFactor) { return dot(xFactor, yFactor, zFactor); };
 
+        // linear interpolation between 2 vectors at a time instance t
+        Vector3 *lerp(Vector3 inVector, float t)
+        {
+            return (*this + *(*(inVector - *this) * t));
+        }
+
         // returns the angle of two vectors
         float angle(Vector3 inVector)
         {
             float dotprod = dot(inVector);
-            float totMag = mag() * inVector.mag();
+            float totMag = magnitude() * inVector.magnitude();
             return acos(dotprod / totMag);
         }
 
@@ -245,7 +259,7 @@ namespace MathVector
             float Phi = atan2(y, x);
             // in this case: the Z is the opposite side, and the magnitude of the vector is the hypotenuse
             // using the arccosine you get the angle from the Z-axis to the vector
-            float Theta = acos(z / mag());
+            float Theta = acos(z / magnitude());
             ret[0] = Phi;
             ret[1] = Theta;
 

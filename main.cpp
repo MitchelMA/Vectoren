@@ -42,7 +42,7 @@ int main(void)
      cout << endl;
 
      cout << "Get the magnitude of the vector:" << endl;
-     cout << MyVec3One->mag() << endl;
+     cout << MyVec3One->magnitude() << endl;
      cout << sqrt(MyVec3One->dot(*MyVec3One)) << endl;
      cout << endl;
 
@@ -74,13 +74,13 @@ int main(void)
      cout << "Set the magnitude of the vector to 10: " << endl;
      MyVec3One->setMag(10);
      cordsPrint(MyVec3One);
-     cout << "Magnitude: " << MyVec3One->mag() << endl;
+     cout << "Magnitude: " << MyVec3One->magnitude() << endl;
      cout << endl;
 
      cout << "Normalize the vector: " << endl;
-     MyVec3One->norm();
+     MyVec3One->normalize();
      cordsPrint(MyVec3One);
-     cout << "Magnitude: " << MyVec3One->mag() << endl;
+     cout << "Magnitude: " << MyVec3One->magnitude() << endl;
      cout << endl;
 
      cout << "Create a 2d vector: " << endl;
@@ -89,6 +89,26 @@ int main(void)
      cout << "Rotate this vector by 45 degrees: " << endl;
      test = test->rotatedBy(45 * PI / 180);
      cordsPrint(test);
+     cout << endl;
+
+     cout << "Get the unit vector" << endl;
+     cordsPrint(test->normalized());
+     cout << test->heading() << endl;
+     cout << "This doesn't change the vector itself: " << endl;
+     cordsPrint(test);
+     cout << test->heading() << endl;
+     cout << endl;
+
+     cout << "linear interpolation: " << endl;
+     Vector3 *startPoint = new Vector3(0, 0, 0);
+     Vector3 *endPoint = new Vector3(1, 1, 5);
+     Vector3 *lerped = startPoint->lerp(*endPoint, 0.5);
+     cout << "start-point: ";
+     cordsPrint(startPoint);
+     cout << "end-point: ";
+     cordsPrint(endPoint);
+     cout << "point at time-instance t = 0.5: ";
+     cordsPrint(lerped);
 
      return 0;
 }

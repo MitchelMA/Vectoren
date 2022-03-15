@@ -27,13 +27,14 @@ MathVector::Vector3::set(float x, float y, float z); // zet x, y en z gelijk aan
 ```
 Het is ook mogelijk om de Magnitude te getten of te setten:
 ```cpp
-float MathVector::Vector3::mag(void);         // Deze method returned de magnitude van de vector
-MathVector::Vector3::setMag(float magnitude); // Deze method zet de waarde van de magnitude
+float MathVector::Vector3::magnitude(void); // Deze method returned de magnitude van de vector
+MathVector::Vector3::setMag(float mag);     // Deze method zet de waarde van de magnitude
 ```
 Je kan de Vector normalizeren of limiten:
 ```cpp
-MathVector::Vector3::norm(void);       // normaliseert de vector
-MathVector::Vector3::limit(float max); // Limits de vector
+MathVector::Vector3::normalize(void);                      // normaliseert de vector
+MathVector::Vector3 *MathVector::Vector3::normalized(void) // geeft de unit vector van de vector waar de method op was geroepen
+MathVector::Vector3::limit(float max);                     // Limits de vector
 ```
 Je kan berekeningen maken met de vector:
 ```cpp
@@ -68,6 +69,10 @@ float MathVector::Vector3::dot(float xFactor, float yFactor, float zFactor); // 
 
 // iets wat heel dicht bij de dot product ligt is het berekenen van een hoek tussen twee vectoren:
 float MathVector::Vector3::angle(MathVector::Vector3 inVector);
+
+// nog iets wat er nu mee kan in Linear Interpolation:
+// deze method returned de linear interpolated waarde van de twee vectoren op een gegeven tijdsmoment t
+MathVector::Vector3 *MathVector::Vector3::lerp(MathVector::Vector3 inVector, float t)
 ```
 
 Het is ook mogelijk om de direction van de Vector te krijgen:

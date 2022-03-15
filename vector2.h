@@ -31,37 +31,45 @@ namespace MathVector
         void set(float value) { x = value, y = value; };
 
         // Get the magnitude of the vector
-        float mag(void) { return sqrt(pow(x, 2) + pow(y, 2)); };
+        float magnitude(void) { return sqrt(pow(x, 2) + pow(y, 2)); };
 
         // Set the magnitude of the vector to the input value
         // Only works if the initial magnitude of the vector is not equal to 0
-        void setMag(float magnitude)
+        void setMag(float mag)
         {
-            float m = mag();
+            float m = magnitude();
             if (m == 0)
                 return;
-            x = (x / m) * magnitude;
-            y = (y / m) * magnitude;
+            x = (x / m) * mag;
+            y = (y / m) * mag;
         }
 
         // Normalizes the vector
         // Only works if the initial magnitued of the vector is not equal to 0
-        void norm(void)
+        void normalize(void)
         {
-            float m = mag();
+            float m = magnitude();
             if (m == 0)
                 return;
             x /= m;
             y /= m;
         }
 
+        // Returns the unit-vector of this vector
+        Vector2 *normalized()
+        {
+            Vector2 *temp = this->copy();
+            temp->normalize();
+            return temp;
+        }
+
         // Limits the magnitude of the vector to the input value
         void limit(float max)
         {
-            float m = mag();
+            float m = magnitude();
             if (m == 0 || m < max)
                 return;
-            norm();
+            normalize();
             setMag(max);
         }
 
@@ -182,11 +190,17 @@ namespace MathVector
         // returns the Scalar Product with two numbers
         float scalar(float xFactor, float yFactor) { return dot(xFactor, yFactor); }
 
+        // linear interpolation between 2 vectors at a time instance t
+        Vector2 *lerp(Vector2 inVector, float t)
+        {
+            return (*this + *(*(inVector - *this) * t));
+        }
+
         // returns the angle of two vectors
         float angle(Vector2 inVector)
         {
             float dotprod = dot(inVector);
-            float totMag = mag() * inVector.mag();
+            float totMag = magnitude() * inVector.magnitude();
             return acos(dotprod / totMag);
         }
 
