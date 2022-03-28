@@ -121,13 +121,26 @@ void MathVector::Vector3::operator*=(const float &factor);                 // de
 MathVector::Vector3 *MathVector::Vector3::operator*(const MathVector::Vector3 &inVector); // deze operator vermenigvuldig twee vectoren met elkaar, en returned dit als een Vector3*
 MathVector::Vector3 *MathVector::Vector3::operator*(const float &factor);                 // deze operator vermenigvuldig een vector met een factor, en returned dit als een Vector3*
 ```
-En als laatst, je kan vectoren ook delen
+je kan vectoren ook delen
 ```cpp
 void MathVector::Vector3::operator/=(const MathVector::Vector3 &inVector); // deze operator deelt de huidige vector door een Vector3
 void MathVector::Vector3::operator/=(const float &factor);                 // deze operator deelt de x, y en z waarden van de huidige vector door een factor
 
 MathVector::Vector3 *MathVector::Vector3::operator/(const MathVector::Vector3 &inVector); // deze operator deelt twee vectoren door elkaar, en returned de waarde als een Vector3*
 MathVector::Vector3 *MathVector::Vector3::operator/(const float &factor);                 // deze operator deelt een vector door een factor, en returned de waarde als een Vector3*
+```
+
+en als laatste: je kan een 3D vector ook roteren om zijn axis  
+(zie [Verschillen](#Verschillen) over hoe dit moet met een 2D vector)
+```cpp
+// returned een Vector3 geroteerd om zijn x-as onder de gegeven hoek ten opzichte van de gecallede Vector3
+MathVector::Vector3 *MathVector::Vector3::rotatedXAxis(float radians);
+
+// returned een Vector3 geroteerd om zijn y-as onder de gegeven hoek ten opzichte van de gecallede Vector3
+MathVector::Vector3 *MathVector::Vector3::rotatedYAxis(float radians);
+
+// returned een Vector3 geroteerd om zijn z-as onder de gegeven hoek ten opzichte van de gecallede Vector3
+MathVector::Vector3 *MathVector::Vector3::rotatedZAxis(float radians);
 ```
 
 ## Verschillen

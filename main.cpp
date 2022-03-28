@@ -109,6 +109,28 @@ int main(void)
      cordsPrint(endPoint);
      cout << "point at time-instance t = 0.5: ";
      cordsPrint(lerped);
+     cout << endl;
+
+     // rotate a vector3
+     Vector3 *toRot = new Vector3(0, 1, 0);
+     cout << "Rotating a Vector3 around its x-axis:" << endl;
+     cordsPrint(toRot);
+     toRot = toRot->rotatedXAxis(PI / 4);
+     cordsPrint(toRot);
+     cout << endl;
+
+     toRot = new Vector3(0, 0, 1);
+     cout << "Rotating a Vector3 around its y-axis:" << endl;
+     cordsPrint(toRot);
+     toRot = toRot->rotatedYAxis(PI / 4);
+     cordsPrint(toRot);
+     cout << endl;
+
+     toRot = new Vector3(1, 0, 0);
+     cout << "Rotating a Vector3 around its z-axis" << endl;
+     cordsPrint(toRot);
+     toRot = toRot->rotatedZAxis(PI / 4);
+     cordsPrint(toRot);
 
      return 0;
 }

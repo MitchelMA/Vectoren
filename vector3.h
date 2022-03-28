@@ -250,6 +250,47 @@ namespace MathVector
             return acos(dotprod / totMag);
         }
 
+        // returns the vector rotated around the x-axis by the given angle in radians
+        Vector3 *rotatedXAxis(float radians)
+        {
+            // this method uses the following matrix-transform:
+            //|1     0           0| |Vx|
+            //|0   cos θ    −sin θ| |Vy|
+            //|0   sin θ     cos θ| |Vz|
+            // where 0 is the angle in radians and V is the vector the method was called on
+
+            float newY = cos(radians) * this->y + -sin(radians) * this->z;
+            float newZ = sin(radians) * this->y + cos(radians) * this->z;
+            return new Vector3(this->x, newY, newZ);
+        }
+
+        // returns the vector rotated around the y-axis by the given angle in radians
+        Vector3 *rotatedYAxis(float radians)
+        {
+            // this method uses the following matrix-transform:
+            //| cos θ    0   sin θ| |Vx|
+            //|   0      1       0| |Vy|
+            //|−sin θ    0   cos θ| |Vz|
+            // where θ is the angle in radians and V the vector the method was called on
+
+            float newX = cos(radians) * this->x + sin(radians) * this->z;
+            float newZ = -sin(radians) * this->x + cos(radians) * this->z;
+            return new Vector3(newX, this->y, newZ);
+        }
+
+        // returns the vector rotated around the z-axis by the given angle in radians
+        Vector3 *rotatedZAxis(float radians)
+        {
+            // this method uses the following matrix-transform:
+            //|cos θ   −sin θ   0| |Vx|
+            //|sin θ    cos θ   0| |Vy|
+            //|  0       0      1| |Vz|
+            // where 0 is the angle in radians and V the vector the method was called on
+            float newX = cos(radians) * this->x + -sin(radians) * this->y;
+            float newY = sin(radians) * this->x + cos(radians) * this->y;
+            return new Vector3(newX, newY, this->z);
+        }
+
         // Returns a float array with a length of 2
         // Index 0: x-y plane direction
         // Index 1: angle from z axis to the vector itself
