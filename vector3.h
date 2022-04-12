@@ -91,7 +91,7 @@ namespace MathVector
         }
 
         // Add another vector to this vector
-        void add(Vector3 inVector)
+        void add(const Vector3 &inVector)
         {
             x += inVector.x;
             y += inVector.y;
@@ -125,7 +125,7 @@ namespace MathVector
         }
 
         // Subtract a vector
-        void sub(Vector3 inVector)
+        void sub(const Vector3 &inVector)
         {
             x -= inVector.x;
             y -= inVector.y;
@@ -158,7 +158,7 @@ namespace MathVector
         }
 
         // Multiply this vector with another vector
-        void mult(Vector3 inVector)
+        void mult(const Vector3 &inVector)
         {
             x *= inVector.x;
             y *= inVector.y;
@@ -191,7 +191,7 @@ namespace MathVector
         }
 
         // Divide this vector by another vector
-        void div(Vector3 inVector)
+        void div(const Vector3 &inVector)
         {
             x /= inVector.x;
             y /= inVector.y;
@@ -224,9 +224,13 @@ namespace MathVector
         }
 
         // Returns the Dot Product of the two vectors
-        float dot(Vector3 inVector) { return x * inVector.x + y * inVector.y + z * inVector.z; };
+        float dot(const Vector3 &inVector)
+        {
+            std::cout << &inVector << std::endl;
+            return x * inVector.x + y * inVector.y + z * inVector.z;
+        };
         // Returns the Scalar Product of the two vectors
-        float scalar(Vector3 inVector) { return dot(inVector); };
+        float scalar(const Vector3 &inVector) { return dot(inVector); };
         // Returns the Dot Product with a number
         float dot(float factor) { return x * factor + y * factor + z * factor; };
         // returns the Scalar Product with a number
@@ -237,13 +241,13 @@ namespace MathVector
         float scalar(float xFactor, float yFactor, float zFactor) { return dot(xFactor, yFactor, zFactor); };
 
         // linear interpolation between 2 vectors at a time instance t
-        Vector3 *lerp(Vector3 inVector, float t)
+        Vector3 *lerp(Vector3 &inVector, float t)
         {
             return (*this + *(*(inVector - *this) * t));
         }
 
         // returns the angle of two vectors
-        float angle(Vector3 inVector)
+        float angle(Vector3 &inVector)
         {
             float dotprod = dot(inVector);
             float totMag = magnitude() * inVector.magnitude();

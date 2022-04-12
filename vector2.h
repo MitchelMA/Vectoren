@@ -74,7 +74,7 @@ namespace MathVector
         }
 
         // Add another vector to this vector
-        void add(Vector2 inVector) { x += inVector.x, y += inVector.y; };
+        void add(const Vector2 &inVector) { x += inVector.x, y += inVector.y; };
         // Add an input value to both the x and y
         void add(float value) { x += value, y += value; };
         // Add an x and y value seperately to the x and y value
@@ -100,7 +100,7 @@ namespace MathVector
         }
 
         // Subtract a vector from this vector
-        void sub(Vector2 inVector) { x -= inVector.x, y -= inVector.x; };
+        void sub(const Vector2 &inVector) { x -= inVector.x, y -= inVector.x; };
         // Subtract the input value form both the x and y
         void sub(float value) { x -= value, y -= value; };
         // Subtract an x and a y value from this vector
@@ -126,7 +126,7 @@ namespace MathVector
         }
 
         // Multiply this vector with another vector
-        void mult(Vector2 inVector) { x *= inVector.x, y *= inVector.y; };
+        void mult(const Vector2 &inVector) { x *= inVector.x, y *= inVector.y; };
         // Multiply this vector with a factor
         void mult(float fact) { x *= fact, y *= fact; };
         // Multiply this vector by a given x and y value
@@ -152,7 +152,7 @@ namespace MathVector
         }
 
         // Divide this vector by another vector
-        void div(Vector2 inVector) { x /= inVector.x, y /= inVector.y; };
+        void div(const Vector2 &inVector) { x /= inVector.x, y /= inVector.y; };
         // Divide this vector by a given factor
         void div(float fact) { x /= fact, y /= fact; };
         // Divide this vector by a given x and y value
@@ -178,9 +178,9 @@ namespace MathVector
         }
 
         // returns the Dot Product of the two Vectors
-        float dot(Vector2 inVector) { return (x * inVector.x) + (y * inVector.y); };
+        float dot(const Vector2 &inVector) { return (x * inVector.x) + (y * inVector.y); };
         // returns the Scalar Product of the two Vectors
-        float scalar(Vector2 inVector) { return dot(inVector); }
+        float scalar(const Vector2 &inVector) { return dot(inVector); }
         // returns the Dot Product with a number
         float dot(float factor) { return (x * factor) + (y * factor); };
         // returns the Scalar Product with a number
@@ -191,13 +191,13 @@ namespace MathVector
         float scalar(float xFactor, float yFactor) { return dot(xFactor, yFactor); }
 
         // linear interpolation between 2 vectors at a time instance t
-        Vector2 *lerp(Vector2 inVector, float t)
+        Vector2 *lerp(Vector2 &inVector, float t)
         {
             return (*this + *(*(inVector - *this) * t));
         }
 
         // returns the angle of two vectors
-        float angle(Vector2 inVector)
+        float angle(Vector2 &inVector)
         {
             float dotprod = dot(inVector);
             float totMag = magnitude() * inVector.magnitude();
