@@ -224,11 +224,7 @@ namespace MathVector
         }
 
         // Returns the Dot Product of the two vectors
-        float dot(const Vector3 &inVector)
-        {
-            std::cout << &inVector << std::endl;
-            return x * inVector.x + y * inVector.y + z * inVector.z;
-        };
+        float dot(const Vector3 &inVector) { return x * inVector.x + y * inVector.y + z * inVector.z; };
         // Returns the Scalar Product of the two vectors
         float scalar(const Vector3 &inVector) { return dot(inVector); };
         // Returns the Dot Product with a number
