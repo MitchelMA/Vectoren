@@ -155,4 +155,8 @@ MathVector::Vector2 *MathVector::Vector2::rotatedBy(float radians)
 
 // De heading() is geen pointer naar een float-array:
 float MathVector::Vector2::heading();
+
+// dit berekent de vector cross product tussen twee vector;
+// dit wordt gebruikt om de normal van een 3D-plane te bereken
+MathVector::Vector3 *MathVector::MathVector3::vectorProd(MathVector::Vector3 &inVector)
 ```

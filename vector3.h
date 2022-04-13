@@ -236,6 +236,26 @@ namespace MathVector
         // Returns the Scalar Porduct with three numbers
         float scalar(float xFactor, float yFactor, float zFactor) { return dot(xFactor, yFactor, zFactor); };
 
+        // returns the Vector cross product of the two vectors
+        Vector3 *vectorProd(const Vector3 &inVector)
+        {
+            /*
+                    | i  j  k |
+            r x s = | a  b  c | = | b  c |    | a  c |    | a  b |
+                    | d  e  f |   | e  f |i - | d  f |j + | d  e |k
+
+            r x s = (bf - ce)i - (af - cd)j + (ae - bd)k
+            */
+            // i:
+            float newX = this->y * inVector.z - this->z * inVector.y;
+            // j:
+            float newY = -1 * (this->x * inVector.z - this->z * inVector.x);
+            // k:
+            float newZ = this->x * inVector.y - this->y * inVector.x;
+
+            return new Vector3(newX, newY, newZ);
+        }
+
         // linear interpolation between 2 vectors at a time instance t
         Vector3 *lerp(Vector3 &inVector, float t)
         {
