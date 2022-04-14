@@ -110,18 +110,18 @@ namespace MathVector
         void operator+=(const float &value) { this->add(value); };
 
         // Get the sum of two vectors
-        Vector3 *operator+(const Vector3 &inVector)
+        Vector3 &operator+(const Vector3 &inVector)
         {
             Vector3 *vec = this->copy();
             vec->add(inVector);
-            return vec;
+            return *vec;
         }
         // Get the sum between a vector and a number
-        Vector3 *operator+(const float &value)
+        Vector3 &operator+(const float &value)
         {
             Vector3 *vec = this->copy();
             vec->add(value);
-            return vec;
+            return *vec;
         }
 
         // Subtract a vector
@@ -143,18 +143,18 @@ namespace MathVector
         // Subtract a number from this vector
         void operator-=(const float &value) { this->sub(value); };
         // Get the difference between the two vectors
-        Vector3 *operator-(const Vector3 &inVector)
+        Vector3 &operator-(const Vector3 &inVector)
         {
             Vector3 *vec = this->copy();
             vec->sub(inVector);
-            return vec;
+            return *vec;
         }
         // Get the difference between a vector and a number
-        Vector3 *operator-(const float &value)
+        Vector3 &operator-(const float &value)
         {
             Vector3 *vec = this->copy();
             vec->sub(value);
-            return vec;
+            return *vec;
         }
 
         // Multiply this vector with another vector
@@ -176,18 +176,18 @@ namespace MathVector
         // Multiply this vector with by a number
         void operator*=(const float &factor) { this->mult(factor); };
         // Multipliy two vectors with each other
-        Vector3 *operator*(const Vector3 &inVector)
+        Vector3 &operator*(const Vector3 &inVector)
         {
             Vector3 *vec = this->copy();
             vec->mult(inVector);
-            return vec;
+            return *vec;
         }
         // Multiply a vector by a value
-        Vector3 *operator*(const float &factor)
+        Vector3 &operator*(const float &factor)
         {
             Vector3 *vec = this->copy();
             vec->mult(factor);
-            return vec;
+            return *vec;
         }
 
         // Divide this vector by another vector
@@ -209,18 +209,18 @@ namespace MathVector
         // Divide this vector by a number
         void operator/=(const float &factor) { this->div(factor); };
         // Divide a vector by another vector
-        Vector3 *operator/(const Vector3 &inVector)
+        Vector3 &operator/(const Vector3 &inVector)
         {
             Vector3 *vec = this->copy();
             vec->div(inVector);
-            return vec;
+            return *vec;
         }
         // Divide a vector by a number
-        Vector3 *operator/(const float &factor)
+        Vector3 &operator/(const float &factor)
         {
             Vector3 *vec = this->copy();
             vec->div(factor);
-            return vec;
+            return *vec;
         }
 
         // Returns the Dot Product of the two vectors
@@ -259,7 +259,7 @@ namespace MathVector
         // linear interpolation between 2 vectors at a time instance t
         Vector3 *lerp(Vector3 &inVector, float t)
         {
-            return (*this + *(*(inVector - *this) * t));
+            return &(*this + (inVector - *this) * t);
         }
 
         // returns the angle of two vectors

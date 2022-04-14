@@ -39,40 +39,40 @@ MathVector::Vector3::limit(float max);                     // Limits de vector
 Je kan berekeningen maken met de vector:
 ```cpp
 // De add function:
-MathVector::Vector3::add(MathVector::Vector3 inVector); // deze function voegt een andere vector toe
+MathVector::Vector3::add(MathVector::Vector3 &inVector); // deze function voegt een andere vector toe
 MathVector::Vector3::add(float value);                  // deze function voegt de waarde "value" toe aan x, y en z
 MathVector::Vector3::add(float x, float y);             // deze function voegt de doorgegeven waardes toe aan x en y
 MathVector::Vector3::add(float x, float y, float z);    // deze function voegt de doorgegeven waardes toe aan x, y en z
 
 // De sub function:
-MathVector::Vector3::sub(MathVector::Vector3 inVector); // deze function haalt een andere vector van de waardes af
+MathVector::Vector3::sub(MathVector::Vector3 &inVector); // deze function haalt een andere vector van de waardes af
 MathVector::Vector3::sub(float value);                  // deze function haalt de waarde van "value" af van x, y en z
 MathVector::Vector3::sub(float x, float y);             // deze function haalt de doorgegeven waardes af van x en y
 MathVector::Vector3::sub(float x, float y, float z);    // deze function haalt de doorgegeven waardes af van x, y en z
 
 // De mult function:
-MathVector::Vector3::mult(MathVector::Vector3 inVector); // deze function vermenigvuldigd twee vectoren met elkaar
+MathVector::Vector3::mult(MathVector::Vector3 &inVector); // deze function vermenigvuldigd twee vectoren met elkaar
 MathVector::Vector3::mult(float factor);                 // deze function vermenigvuldigd de vector met een factor
 MathVector::Vector3::mult(float xFactor, float yFactor); // deze function vermenigvuldigd de x en y waardes met de gegeven factoren
 MathVector::Vector3::mult(float xFactor, float yFactor, float zFactor); // deze function vermenigvuldigd de x, y en z waardes met de gegeven factoren
 
 // De div function:
-MathVector::Vector3::div(MathVector::Vector3 inVector);  // deze function deelt twee vectoren door elkaar
+MathVector::Vector3::div(MathVector::Vector3 &inVector);  // deze function deelt twee vectoren door elkaar
 MathVector::Vector3::div(float factor);                  // deze function deelt de vector door een gegeven factor
 MathVector::Vector3::div(float xFactor, float yFactor);  // deze function deelt de x en de y waardes door de gegeven factoren
 MathVector::Vector3::div(float xFactor, float yFactor, float zFactor) // deze function deelt de x, y en z door de gegeven factoren
 
 // De dot (en scalar) function:
-float MathVector::Vector3::dot(MathVector::Vector3 inVector); // deze function returned de Dot Product van twee vectoren
+float MathVector::Vector3::dot(MathVector::Vector3 &inVector); // deze function returned de Dot Product van twee vectoren
 float MathVector::Vector3::dot(float factor);                 // deze function returned de Dot product van de vector en de gegeven factor
 float MathVector::Vector3::dot(float xFactor, float yFactor, float zFactor); // deze function returned de Dot product van de vector en de x,y en z factoren
 
 // iets wat heel dicht bij de dot product ligt is het berekenen van een hoek tussen twee vectoren:
-float MathVector::Vector3::angle(MathVector::Vector3 inVector);
+float MathVector::Vector3::angle(MathVector::Vector3 &inVector);
 
 // nog iets wat er nu mee kan in Linear Interpolation:
 // deze method returned de linear interpolated waarde van de twee vectoren op een gegeven tijdsmoment t
-MathVector::Vector3 *MathVector::Vector3::lerp(MathVector::Vector3 inVector, float t)
+MathVector::Vector3 *MathVector::Vector3::lerp(MathVector::Vector3 &inVector, float t)
 ```
 
 Het is ook mogelijk om de direction van de Vector te krijgen:
@@ -100,8 +100,8 @@ void MathVector::Vector3::operator+=(const MathVector::Vector3 &inVector); // de
 void MathVector::Vector3::operator+=(const float &value);                  // deze operator voegd een getal toe aan de x, y en z van de huidige vector
 
 // Totaal berekenen:
-MathVector::Vector3 *MathVector::Vector3::operator+(const MathVector::Vector3 &inVector); // deze operator berekent het totaal van 2 vectoren, en returned dit als een Vector3*
-MathVector::Vector3 *MathVector::Vector3::operator+(const float &value);                  // deze operator berekent het totaal van een vector en een getal, en returned dit als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator+(const MathVector::Vector3 &inVector); // deze operator berekent het totaal van 2 vectoren, en returned dit als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator+(const float &value);                  // deze operator berekent het totaal van een vector en een getal, en returned dit als een Vector3*
 ```
 Je kan Vectoren van elkaar afhalen of het verschil berekenen:
 ```cpp
@@ -110,24 +110,24 @@ void MathVector::Vector3::operator-=(const MathVector::Vector3 &inVector); // de
 void MathVector::Vector3::operator-=(const float &value);                  // deze operator haalt een getal van de x, y en z waarde af
 
 // Bereken verschil:
-MathVector::Vector3 *MathVector::Vector3::operator-(const MathVector::Vector3 &inVector); // deze operator berekent het verschil tussen twee vectoren, en returned dit als een Vector3*
-MathVector::Vector3 *MathVector::Vector3::operator-(const float &value);                  // deze operator berekent het verschil tussen een vector en een getal, en returned dit als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator-(const MathVector::Vector3 &inVector); // deze operator berekent het verschil tussen twee vectoren, en returned dit als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator-(const float &value);                  // deze operator berekent het verschil tussen een vector en een getal, en returned dit als een Vector3*
 ```
 Je kan Vectoren vermenigvuldigen:
 ```cpp
 void MathVector::Vector3::operator*=(const MathVector::Vector3 &inVector); // deze operator vermenigvuldigd de huidige vector met een andere vector
 void MathVector::Vector3::operator*=(const float &factor);                 // deze operator vermenigvuldigd de x, y en z van de huidige vector met de factor
 
-MathVector::Vector3 *MathVector::Vector3::operator*(const MathVector::Vector3 &inVector); // deze operator vermenigvuldig twee vectoren met elkaar, en returned dit als een Vector3*
-MathVector::Vector3 *MathVector::Vector3::operator*(const float &factor);                 // deze operator vermenigvuldig een vector met een factor, en returned dit als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator*(const MathVector::Vector3 &inVector); // deze operator vermenigvuldig twee vectoren met elkaar, en returned dit als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator*(const float &factor);                 // deze operator vermenigvuldig een vector met een factor, en returned dit als een Vector3*
 ```
 je kan vectoren ook delen
 ```cpp
 void MathVector::Vector3::operator/=(const MathVector::Vector3 &inVector); // deze operator deelt de huidige vector door een Vector3
 void MathVector::Vector3::operator/=(const float &factor);                 // deze operator deelt de x, y en z waarden van de huidige vector door een factor
 
-MathVector::Vector3 *MathVector::Vector3::operator/(const MathVector::Vector3 &inVector); // deze operator deelt twee vectoren door elkaar, en returned de waarde als een Vector3*
-MathVector::Vector3 *MathVector::Vector3::operator/(const float &factor);                 // deze operator deelt een vector door een factor, en returned de waarde als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator/(const MathVector::Vector3 &inVector); // deze operator deelt twee vectoren door elkaar, en returned de waarde als een Vector3*
+MathVector::Vector3 &MathVector::Vector3::operator/(const float &factor);                 // deze operator deelt een vector door een factor, en returned de waarde als een Vector3*
 ```
 
 en als laatste: je kan een 3D vector ook roteren om zijn axis  
