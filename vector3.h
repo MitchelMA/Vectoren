@@ -259,7 +259,15 @@ namespace MathVector
         // linear interpolation between 2 vectors at a time instance t
         Vector3 *lerp(Vector3 &inVector, float t)
         {
-            return &(*this + (inVector - *this) * t);
+            Vector3 *tmp1 = this->copy();
+            Vector3 *tmp2 = inVector.copy();
+
+            tmp2->sub(*tmp1);
+            tmp2->mult(t);
+            tmp1->add(*tmp2);
+            free(tmp2);
+
+            return tmp1;
         }
 
         // returns the angle of two vectors
